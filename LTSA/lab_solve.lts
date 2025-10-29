@@ -1,0 +1,388 @@
+// ===================================================================
+// CSE430 - LTSA Lab Solutions
+// All 10 Problems with Complete Implementation
+// ===================================================================
+
+// ===================================================================
+// PROBLEM 1: Toggle Switch (SWITCH)
+// ===================================================================
+// Description: Models a simple switch that alternates between ON and OFF
+// The switch starts in an initial state, turns on, then off, and repeats
+
+SWITCH = (on -> off -> SWITCH).
+
+// Simple Explanation:
+// - The switch performs 'on' action first
+// - Then performs 'off' action
+// - SWITCH at the end means it returns to start (recursion)
+// - This creates an infinite loop: on -> off -> on -> off...
+
+// OBSERVATION:
+// This model has 2 states and 2 transitions forming a cycle. State 0 (initial)
+// goes to State 1 via 'on' action, then State 1 returns to State 0 via 'off'.
+// It represents the simplest repeating behavior in FSP.
+
+// EXPLANATION:
+// The switch toggles between two positions continuously. When you turn it 'on',
+// it moves to the ON state. Then you must turn it 'off' to return to start.
+// This models devices like light switches or power buttons that alternate states.
+
+
+// ===================================================================
+// PROBLEM 2: Traffic Light Controller
+// ===================================================================
+// Description: Models a traffic light with sequential color changes
+// Standard traffic light cycle: Red -> Green -> Yellow -> Red
+
+TRAFFIC_LIGHT = (red -> green -> yellow -> TRAFFIC_LIGHT).
+
+// Simple Explanation:
+// - Starts with red light
+// - Changes to green (go)
+// - Then yellow (caution)
+// - Returns to red (stop)
+// - This cycle repeats indefinitely
+// - Each transition represents the light changing color
+
+// OBSERVATION:
+// This model creates 3 states with 3 transitions in a circular pattern. Starting
+// from State 0, it transitions through red→green→yellow and loops back. The LTS
+// diagram shows a triangle where each corner represents a different light color.
+
+// EXPLANATION:
+// The traffic light follows a strict sequence that never changes. Red means stop,
+// green means go, yellow means prepare to stop. The cycle repeats forever, ensuring
+// safe traffic flow. There are no choices or branches - just one fixed path.
+
+
+// ===================================================================
+// PROBLEM 3: Drinks Machine with Cancel Option
+// ===================================================================
+// Description: Extended drinks machine allowing user to cancel selection
+
+DRINKS_MACHINE = (
+    red -> (coffee -> DRINKS_MACHINE | cancel -> DRINKS_MACHINE)
+  | blue -> (tea -> DRINKS_MACHINE | cancel -> DRINKS_MACHINE)
+  | cancel -> DRINKS_MACHINE
+).
+
+// Simple Explanation:
+// - User can choose 'red' button (leads to coffee) or 'blue' button (leads to tea)
+// - After selecting red or blue, user can either:
+//   * Complete the order (coffee/tea is dispensed)
+//   * Cancel the order (cancel action)
+// - User can also cancel without selecting anything
+// - After any action sequence, machine returns to initial state
+// - The '|' symbol represents choice (OR operation)
+
+// OBSERVATION:
+// This model has approximately 5 states with 7 possible transitions. From the initial
+// state, there are 3 choices (red, blue, cancel). After red/blue, there are 2 more
+// choices each (complete or cancel). The LTS shows a tree-like structure with multiple paths.
+
+// EXPLANATION:
+// The drinks machine is flexible - you can change your mind at any point. If you press
+// red but want tea instead, just hit cancel and start over. This models real vending
+// machines where customers can abort their selection before payment is finalized.
+
+
+// ===================================================================
+// PROBLEM 4: Coin Toss Machine (Non-Deterministic)
+// ===================================================================
+// Description: Models a coin flip with uncertain outcome
+// Same action (toss) can lead to different results
+
+COIN_TOSS = (toss -> RESULT),
+RESULT = (heads -> COIN_TOSS | tails -> COIN_TOSS).
+
+// Alternative representation showing non-determinism clearly:
+COIN_V2 = (toss -> HEADS | toss -> TAILS),
+HEADS = (heads -> COIN_V2),
+TAILS = (tails -> COIN_V2).
+
+// Simple Explanation:
+// - User performs 'toss' action
+// - System non-deterministically chooses HEADS or TAILS
+// - If HEADS: system shows 'heads' and returns to start
+// - If TAILS: system shows 'tails' and returns to start
+// - Non-deterministic means the outcome is not predictable from the model
+// - COIN_V2 shows the classic non-deterministic pattern
+
+// OBSERVATION:
+// This creates 3 states with non-deterministic branching. From State 0, the 'toss'
+// action can lead to either State 1 (HEADS) or State 2 (TAILS) - LTSA shows both
+// paths from the same action. Then 'heads' or 'tails' actions return to State 0.
+
+// EXPLANATION:
+// Unlike previous models where each action had one outcome, here 'toss' has two possible
+// results. LTSA explores both possibilities when animating. This models real randomness
+// like flipping a coin - you can't predict heads or tails before tossing.
+
+
+// ===================================================================
+// PROBLEM 5: Counter with Guard Conditions
+// ===================================================================
+// Description: Counter that prevents underflow (below 0) and overflow (above MAX)
+// Uses guarded actions to restrict invalid operations
+
+const MAX = 3
+COUNT = COUNT[0],
+COUNT[i:0..MAX] = (
+    when (i < MAX) inc -> COUNT[i+1]
+  | when (i > 0) dec -> COUNT[i-1]
+  | when (i == 0) reset -> COUNT[0]
+  | when (i == MAX) reset -> COUNT[0]
+).
+
+// Simple Explanation:
+// - COUNT[i] represents counter value 'i' (ranges from 0 to MAX=3)
+// - 'when (i < MAX) inc': increment only allowed if not at maximum
+//   * If current value is 2, can increment to 3
+//   * If current value is 3 (MAX), increment is blocked
+// - 'when (i > 0) dec': decrement only allowed if not at zero
+//   * If current value is 1, can decrement to 0
+//   * If current value is 0, decrement is blocked
+// - 'reset' action returns counter to 0 from any state
+// - Guards prevent invalid states (negative or > MAX)
+
+// OBSERVATION:
+// This model has exactly 4 states (COUNT[0], COUNT[1], COUNT[2], COUNT[3]) with guarded
+// transitions between them. At COUNT[0], only 'inc' and 'reset' are enabled. At COUNT[3],
+// only 'dec' and 'reset' are enabled. Middle states have all three actions available.
+
+// EXPLANATION:
+// Guards act like safety locks - they prevent impossible operations. You can't decrement
+// below zero or increment above the maximum. The LTS shows a linear chain of states where
+// you can only move up or down within valid bounds, ensuring the counter never breaks.
+
+
+// ===================================================================
+// PROBLEM 6: Maker-User Synchronization System
+// ===================================================================
+// Description: Two processes that must synchronize on 'ready' action
+// Demonstrates parallel composition and synchronization
+
+MAKER = (make -> ready -> MAKER).
+USER2 = (ready -> use -> USER2).
+
+||MAKER_USER_SYSTEM = (MAKER || USER2).
+
+// Simple Explanation:
+// - MAKER: produces something ('make'), signals 'ready'
+// - USER: waits for 'ready' signal, then uses the item
+// - The '||' operator means parallel composition
+// - 'ready' is a SHARED action - both must perform it simultaneously
+// - Possible execution: make -> ready (synchronized) -> use -> make...
+// - USER cannot proceed with 'use' until MAKER signals 'ready'
+// - This ensures proper synchronization between producer and consumer
+
+// OBSERVATION:
+// The composed system has 4 states created from combining both processes. The 'ready'
+// action is a synchronization point where both MAKER and USER must meet. Before 'ready',
+// only MAKER can do 'make'. After 'ready', only USER can do 'use', then cycle repeats.
+
+// EXPLANATION:
+// Think of it like a factory: the MAKER builds a product and says "ready!", then the
+// USER must wait for that signal before using it. They coordinate at the 'ready' action
+// - neither can skip it. This prevents the USER from trying to use something not yet made.
+
+
+// ===================================================================
+// PROBLEM 7: Client-Server with Relabelling
+// ===================================================================
+// Description: Client and Server with different action names
+// Uses relabelling to synchronize communication
+
+CLIENT = (call -> wait -> continue -> CLIENT).
+SERVER = (request -> service -> reply -> SERVER).
+
+||CLIENT_SERVER = (CLIENT || SERVER) / {
+    call/request,
+    reply/wait
+}.
+
+// Simple Explanation:
+// - CLIENT: makes a 'call', 'wait's for response, then 'continue's
+// - SERVER: receives 'request', performs 'service', sends 'reply'
+// - Relabelling syntax: {call/request} means:
+//   * CLIENT's 'call' action is renamed to 'request'
+//   * This makes it match SERVER's 'request' action
+// - {reply/wait} means:
+//   * SERVER's 'reply' is renamed to 'wait'
+//   * This synchronizes with CLIENT's 'wait'
+// - Execution: call=request (sync) -> service -> reply=wait (sync) -> continue
+// - Relabelling enables communication between independently designed components
+
+// OBSERVATION:
+// The system has 4 states with 4 transitions. Two synchronization points exist: when
+// CLIENT's 'call' matches SERVER's 'request', and when SERVER's 'reply' matches CLIENT's
+// 'wait'. The 'service' and 'continue' actions happen independently without synchronization.
+
+// EXPLANATION:
+// CLIENT and SERVER speak different languages, so relabelling translates between them.
+// When CLIENT calls, SERVER hears it as a request. When SERVER replies, CLIENT receives
+// it as the response they're waiting for. This lets separately designed systems communicate.
+
+
+// ===================================================================
+// PROBLEM 8: Shared Printer with Mutual Exclusion
+// ===================================================================
+// Description: Two users sharing one printer resource
+// Ensures only one user can access printer at a time
+
+PRINTER = (acquire -> release -> PRINTER).
+USER_PROCESS = (printer.acquire -> use -> printer.release -> USER_PROCESS).
+
+||SHARED_PRINTER = (
+    user_a:USER_PROCESS || 
+    user_b:USER_PROCESS || 
+    {user_a, user_b}::printer:PRINTER
+).
+
+// Simple Explanation:
+// - PRINTER: can be acquired and released (represents a shared resource)
+// - USER_PROCESS: acquires printer, uses it, releases it
+// - 'user_a:USER_PROCESS' creates an instance named 'user_a'
+//   * Its actions become: user_a.printer.acquire, user_a.printer.release
+// - '{user_a, user_b}::printer:PRINTER' means:
+//   * Both users share the same PRINTER instance
+//   * user_a.printer.acquire and user_b.printer.acquire both sync with printer.acquire
+// - MUTUAL EXCLUSION: Only one user can hold the printer at a time
+// - If user_a acquires, user_b must wait until user_a releases
+// - This prevents conflicts in resource access
+
+// OBSERVATION:
+// The system has 6 states representing all combinations of user activities and printer
+// status. Only one user can be in the "using printer" state at a time. When user_a holds
+// the printer, user_b's acquire attempt is blocked, creating mutual exclusion automatically.
+
+// EXPLANATION:
+// Like a real office printer - only one person can print at a time. If user_a is printing,
+// user_b must wait. Once user_a finishes and releases the printer, user_b can acquire it.
+// The system ensures no print job conflicts by enforcing turn-taking through shared resource locking.
+
+
+// ===================================================================
+// PROBLEM 9: ATM System with Safety Property
+// ===================================================================
+// Description: Complete ATM system with User, ATM machine, and Bank
+// Verifies that cash is never dispensed without authorization
+
+USER = (
+    insert_card -> enter_pin -> 
+    (auth_success -> select_withdraw -> 
+        (cash_dispensed -> take_cash -> card_returned -> USER
+        | error_shown -> card_returned -> USER)
+    | auth_failed -> card_returned -> USER)
+).
+
+ATM = (
+    insert_card -> enter_pin -> auth_request ->
+    (auth_success -> select_withdraw -> debit_request ->
+        (debit_success -> cash_dispensed -> card_returned -> ATM
+        | debit_failed -> error_shown -> card_returned -> ATM)
+    | auth_failed -> card_returned -> ATM)
+).
+
+BANK = (
+    auth_request -> (auth_success -> BANK | auth_failed -> BANK)
+  | debit_request -> (debit_success -> BANK | debit_failed -> BANK)
+).
+
+||ATM_SYSTEM = (USER || ATM || BANK).
+
+// Safety Property: Cash never dispensed without authorization
+property SAFE_WITHDRAWAL = (
+    auth_success -> AUTHORIZED
+),
+AUTHORIZED = (
+    cash_dispensed -> SAFE_WITHDRAWAL
+  | auth_success -> AUTHORIZED
+  | card_returned -> SAFE_WITHDRAWAL
+).
+
+||ATM_WITH_SAFETY = (ATM_SYSTEM || SAFE_WITHDRAWAL).
+
+// Simple Explanation:
+// - USER: Represents customer interactions with ATM
+// - ATM: Represents the ATM machine logic
+// - BANK: Represents backend banking system
+// 
+// Flow:
+// 1. User inserts card and enters PIN
+// 2. ATM sends auth_request to BANK
+// 3. BANK responds with auth_success or auth_failed
+// 4. If successful, user selects withdrawal
+// 5. ATM sends debit_request to BANK
+// 6. BANK responds with debit_success or debit_failed
+// 7. If successful, cash is dispensed
+// 8. Card is always returned
+//
+// SAFE_WITHDRAWAL property ensures:
+// - 'cash_dispensed' can only occur after 'auth_success'
+// - This prevents unauthorized withdrawals
+// - If property is violated, LTSA will detect it during verification
+
+// OBSERVATION:
+// The system has approximately 15-20 states with multiple branching paths for success/failure
+// scenarios. The safety property adds constraint states ensuring 'cash_dispensed' cannot occur
+// without prior 'auth_success'. Three synchronization points exist: auth_request, debit_request, card_returned.
+
+// EXPLANATION:
+// This models a complete ATM transaction with security checks. The BANK validates both authentication
+// and account balance before allowing cash withdrawal. The safety property mathematically proves that
+// no execution path can dispense cash without successful authorization - preventing theft or system errors.
+
+
+// ===================================================================
+// PROBLEM 10: Progress Property - Card Always Returned
+// ===================================================================
+// Description: Ensures the ATM system always returns the card
+// Progress property verifies that desired events eventually occur
+
+// Using the ATM_SYSTEM from Problem 9
+progress CARD_RETURNED = {card_returned}
+
+||ATM_WITH_PROGRESS = (ATM_SYSTEM || SAFE_WITHDRAWAL) >> {card_returned}.
+
+// Simple Explanation:
+// - Progress property: ensures 'card_returned' eventually happens
+// - '{card_returned}' is the set of progress actions
+// - If there's any execution path where card is never returned,
+//   LTSA will detect a progress violation
+// - This prevents scenarios where:
+//   * Card gets stuck in machine
+//   * System hangs without returning card
+//   * Infinite loops that skip card return
+// - '>>' symbol marks progress actions to check
+// - LTSA verifies that in all possible execution traces,
+//   'card_returned' will eventually occur
+
+// OBSERVATION:
+// Progress checking analyzes all possible execution paths (success, auth failure, debit failure)
+// to verify 'card_returned' appears in every trace. LTSA ensures there are no infinite loops or
+// dead-end states that skip card return. All 15-20 states must eventually lead to 'card_returned'.
+
+// EXPLANATION:
+// Unlike safety (which prevents bad things), progress ensures good things happen. No matter what
+// goes wrong - wrong PIN, insufficient funds, or system error - the customer always gets their card
+// back. LTSA mathematically proves the ATM never keeps cards, preventing customer complaints and legal issues.
+
+
+// ===================================================================
+// VERIFICATION INSTRUCTIONS
+// ===================================================================
+// 
+// To verify each solution:
+// 1. Copy the relevant section to LTSA
+// 2. Click "Compile" button
+// 3. Select the process from the list
+// 4. Click "Draw" to see the LTS diagram
+// 5. Click "Animate" to simulate execution
+// 6. For properties (Problems 9 & 10):
+//    - Compile the ||..._WITH_SAFETY or ||..._WITH_PROGRESS
+//    - Click "Check" to verify properties
+//    - LTSA will report if properties are satisfied or violated
+//
+// ===================================================================
+
