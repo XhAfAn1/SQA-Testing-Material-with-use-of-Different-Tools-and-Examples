@@ -1,0 +1,189 @@
+{
+  "id": "57ddc09f-8dfe-413f-bfef-496b077ccf45",
+  "version": "2.0",
+  "name": "Responsive Navigation (W3Schools)",
+  "url": "https://www.w3schools.com",
+  "tests": [{
+    "id": "c3597f43-cfd9-4bc6-82c5-977508d71b41",
+    "name": "Responsive Navigation (W3Schools)",
+    "commands": [{
+      "id": "0fe3bf4b-b5bf-4ed2-b737-2912bea04650",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "62651dc1-e7c3-4918-8b2b-c3084651091c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1066",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1b0be023-430d-44d9-9ee2-d6587ca62367",
+      "comment": "",
+      "command": "click",
+      "target": "css=#navbtn_tutorials > .fa-caret-down",
+      "targets": [
+        ["css=#navbtn_tutorials > .fa-caret-down", "css:finder"],
+        ["xpath=//a[@id='navbtn_tutorials']/i", "xpath:idRelative"],
+        ["xpath=//nav/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f030671-ea04-4f68-a901-8c92c82e6aa4",
+      "comment": "",
+      "command": "click",
+      "target": "id=nav_tutorials",
+      "targets": [
+        ["id=nav_tutorials", "id"],
+        ["css=#nav_tutorials", "css:finder"],
+        ["xpath=//nav[@id='nav_tutorials']", "xpath:attributes"],
+        ["xpath=//div[@id='dropdown-nav-inner-wrapper']/nav", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/nav", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d2cfea8-46b9-4579-a58e-5c78658b4ca6",
+      "comment": "",
+      "command": "click",
+      "target": "css=#navbtn_services > svg",
+      "targets": [
+        ["css=#navbtn_services > svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "f960760d-540b-44ad-bf9a-0669fa43c38a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.w3-button:nth-child(4) > span",
+      "targets": [
+        ["css=.w3-button:nth-child(4) > span", "css:finder"],
+        ["xpath=//div[@id='services_list']/div[4]/span", "xpath:idRelative"],
+        ["xpath=//div[4]/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61d3e73d-6fb5-4413-8a78-464cf5f0d4e6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=JAVA",
+      "targets": [
+        ["linkText=JAVA", "linkText"],
+        ["css=.ga-nav:nth-child(9)", "css:finder"],
+        ["xpath=(//a[contains(text(),'JAVA')])[2]", "xpath:link"],
+        ["xpath=//div[@id='subtopnav']/a[6]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/java/default.asp')])[3]", "xpath:href"],
+        ["xpath=//div[4]/div/a[6]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc60542f-cc2f-436f-8858-beb0b3f8d512",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Start learning Java now »",
+      "targets": [
+        ["linkText=Start learning Java now »", "linkText"],
+        ["css=.w3-btn:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Start learning Java now »')]", "xpath:link"],
+        ["xpath=//div[@id='main']/div[3]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'java_intro.asp')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Start learning Java now »')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd954365-99c6-44e6-8b74-19faa14c1fb4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Next ❯",
+      "targets": [
+        ["linkText=Next ❯", "linkText"],
+        ["css=.w3-clear:nth-child(3) > .w3-right", "css:finder"],
+        ["xpath=//a[contains(text(),'Next ❯')]", "xpath:link"],
+        ["xpath=//div[@id='main']/div[2]/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'java_getstarted.asp')])[2]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Next ❯')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "57119bc2-6121-49be-8791-767556381b57",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Next ❯",
+      "targets": [
+        ["linkText=Next ❯", "linkText"],
+        ["css=.w3-clear:nth-child(3) > .w3-right", "css:finder"],
+        ["xpath=//a[contains(text(),'Next ❯')]", "xpath:link"],
+        ["xpath=//div[@id='main']/div[2]/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'java_syntax.asp')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Next ❯')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9ad5564-d8f4-44a6-97d9-57ba0f7e6e6a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Next ❯",
+      "targets": [
+        ["linkText=Next ❯", "linkText"],
+        ["css=.w3-clear:nth-child(3) > .w3-right", "css:finder"],
+        ["xpath=//a[contains(text(),'Next ❯')]", "xpath:link"],
+        ["xpath=//div[@id='main']/div[2]/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'java_syntax.asp')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Next ❯')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3f0d9a57-c866-4f73-a152-bb7a53fbc4d9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Next ❯",
+      "targets": [
+        ["linkText=Next ❯", "linkText"],
+        ["css=.w3-clear:nth-child(3) > .w3-right", "css:finder"],
+        ["xpath=//a[contains(text(),'Next ❯')]", "xpath:link"],
+        ["xpath=//div[@id='main']/div[2]/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'java_statements.asp')])[2]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Next ❯')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2813dfb7-cc7d-4df6-b3fb-60aaa6fd0063",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=upperfeatureshowcase300",
+      "targets": [
+        ["id=upperfeatureshowcase300", "id"],
+        ["css=#upperfeatureshowcase300", "css:finder"],
+        ["xpath=//img[@alt='Get Certified Offer']", "xpath:img"],
+        ["xpath=//img[@id='upperfeatureshowcase300']", "xpath:attributes"],
+        ["xpath=//picture[@id='upperfeatureshowcase']/img", "xpath:idRelative"],
+        ["xpath=//picture/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "92e69de6-2676-4e11-b460-75b43fa77518",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f9482e85-e3e3-469c-8163-1200a2012826",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["c3597f43-cfd9-4bc6-82c5-977508d71b41"]
+  }],
+  "urls": ["https://www.w3schools.com/"],
+  "plugins": []
+}

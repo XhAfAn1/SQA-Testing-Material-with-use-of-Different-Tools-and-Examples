@@ -1,0 +1,112 @@
+{
+  "id": "c3896943-2ef5-4d86-ace9-4fa09d304a3b",
+  "version": "2.0",
+  "name": "Wikipedia Search Test",
+  "url": "https://www.wikipedia.org",
+  "tests": [{
+    "id": "44c14fa3-aef5-47c9-bf82-7943fa43e822",
+    "name": "wiki test",
+    "commands": [{
+      "id": "419e49d7-26f9-45f6-b104-d187c78e5b19",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "680dad5f-9fa1-4254-aff9-2df6c059c159",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1290x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "89c6c8a8-71dd-4e9b-9d0b-b836a6a47ed9",
+      "comment": "",
+      "command": "type",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["name=search", "name"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//div[@id='search-input']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Alan Turing"
+    }, {
+      "id": "63e07130-2197-487a-826c-01e8c0e7a356",
+      "comment": "",
+      "command": "click",
+      "target": "css=.active .suggestion-title",
+      "targets": [
+        ["css=.active .suggestion-title", "css:finder"],
+        ["xpath=//div[@id='typeahead-suggestions']/div/a/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Alan Turing')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a171311e-0c15-4a0c-be92-673b674c5474",
+    "name": "wiki test 2",
+    "commands": [{
+      "id": "d23a12ce-6f05-4b70-9fb1-a3b663d13f55",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "65061c10-7c67-4262-b5de-08d8e973b080",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1290x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2037bbca-c03f-4b03-9f82-8f7075765a47",
+      "comment": "",
+      "command": "type",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["name=search", "name"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//div[@id='search-input']/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "Alan Turing"
+    }, {
+      "id": "07de1aa7-5cd7-4fce-9ec8-8203150834fc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.active .suggestion-title",
+      "targets": [
+        ["css=.active .suggestion-title", "css:finder"],
+        ["xpath=//div[@id='typeahead-suggestions']/div/a/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Alan Turing')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1792612e-f44f-42a6-b390-202cf401aa19",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "6647e26f-f711-46ec-ad5f-63fed48e5f68",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["44c14fa3-aef5-47c9-bf82-7943fa43e822"]
+  }],
+  "urls": ["https://www.wikipedia.org/"],
+  "plugins": []
+}

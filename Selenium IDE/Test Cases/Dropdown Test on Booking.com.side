@@ -1,0 +1,119 @@
+{
+  "id": "73550f22-13a5-49c4-91c7-662b3c2ec435",
+  "version": "2.0",
+  "name": "Dropdown Test on Booking.com",
+  "url": "https://www.booking.com",
+  "tests": [{
+    "id": "e513a5c6-978c-4309-989a-937cee9ee394",
+    "name": "dropdown test",
+    "commands": [{
+      "id": "946e15f6-8ce5-48fa-9565-716769206115",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d724d8f-dae7-4ce2-a07b-327cf9e874ac",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1066",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3159630e-7539-470b-a2aa-58ce94bf8cdb",
+      "comment": "",
+      "command": "click",
+      "target": "id=:rh:",
+      "targets": [
+        ["id=:rh:", "id"],
+        ["name=ss", "name"],
+        ["css=#\\3Arh\\3A", "css:finder"],
+        ["xpath=//input[@id=':rh:']", "xpath:attributes"],
+        ["xpath=//main[@id='main']/div/div/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c4bd66f3-f4c7-495f-832a-4824cf4df37f",
+      "comment": "",
+      "command": "type",
+      "target": "id=:rh:",
+      "targets": [
+        ["id=:rh:", "id"],
+        ["name=ss", "name"],
+        ["css=#\\3Arh\\3A", "css:finder"],
+        ["xpath=//input[@id=':rh:']", "xpath:attributes"],
+        ["xpath=//main[@id='main']/div/div/div/div/div/div/div/div/div[2]/div/div/div/form/div/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Dhaka"
+    }, {
+      "id": "d777e91c-11b1-469d-a6d2-2579c828f154",
+      "comment": "",
+      "command": "click",
+      "target": "css=#autocomplete-result-0 .b08850ce41",
+      "targets": [
+        ["css=#autocomplete-result-0 .b08850ce41", "css:finder"],
+        ["xpath=//li[@id='autocomplete-result-0']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//li/div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "928840c0-3bf8-4573-acea-19bee6cbe348",
+      "comment": "",
+      "command": "click",
+      "target": "css=.d9382a910a",
+      "targets": [
+        ["css=.d9382a910a", "css:finder"],
+        ["xpath=//div[@id='calendar-searchboxdatepicker']/div/div/div/div/table/tbody/tr[4]/td[7]/span", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[7]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'28')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef6c9848-2712-46f8-84e3-958f71c2dfed",
+      "comment": "",
+      "command": "click",
+      "target": "css=.f3e59d528f > .ca2ca5203b",
+      "targets": [
+        ["css=.f3e59d528f > .ca2ca5203b", "css:finder"],
+        ["xpath=//main[@id='main']/div/div/div/div/div/div/div/div/div[2]/div/div/div/form/div/div[4]/button/span", "xpath:idRelative"],
+        ["xpath=//div[4]/button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f2fbb91-a9e7-4481-b36a-be191f995356",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,271)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6d374501-c74b-4560-9f4b-808bee7c620b",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,968)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aa11affc-f965-4ec3-95d6-85f4f352f8d3",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "dda0e8a1-8b75-414b-a793-8733c2f15382",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://www.booking.com/"],
+  "plugins": []
+}

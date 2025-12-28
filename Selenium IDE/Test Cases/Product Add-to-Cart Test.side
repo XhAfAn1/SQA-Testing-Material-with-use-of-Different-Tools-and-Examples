@@ -1,0 +1,129 @@
+{
+  "id": "7cc63eca-b4dd-4594-b38d-a705a9e4ce1a",
+  "version": "2.0",
+  "name": "Product Add-to-Cart Test",
+  "url": "https://advantageonlineshopping.com",
+  "tests": [{
+    "id": "5fd8151f-cc60-45bb-8253-c1685b78dd76",
+    "name": "Product Add-to-Cart Test",
+    "commands": [{
+      "id": "6fd805f2-03a9-42c9-b60d-6deb24e1e4b1",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6e543f73-97ce-4430-bab5-f3c39739bc89",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1066",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "299377e7-236c-4dd5-82a4-8961c46210f6",
+      "comment": "",
+      "command": "click",
+      "target": "id=speakersImg",
+      "targets": [
+        ["id=speakersImg", "id"],
+        ["css=#speakersImg", "css:finder"],
+        ["xpath=//div[@id='speakersImg']", "xpath:attributes"],
+        ["xpath=//article[@id='our_products']/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//article/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1be98583-b1e9-49be-aa9e-a30cf6010186",
+      "comment": "",
+      "command": "click",
+      "target": "id=25",
+      "targets": [
+        ["id=25", "id"],
+        ["css=#\\32 5", "css:finder"],
+        ["xpath=//img[@id='25']", "xpath:attributes"],
+        ["xpath=//li[2]/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cabaf94c-4ff2-47f8-989a-c619e7174ef6",
+      "comment": "",
+      "command": "click",
+      "target": "name=save_to_cart",
+      "targets": [
+        ["name=save_to_cart", "name"],
+        ["css=.fixedBtn > .roboto-medium", "css:finder"],
+        ["xpath=//button[@name='save_to_cart']", "xpath:attributes"],
+        ["xpath=//div[@id='productProperties']/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ADD TO CART')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "209b707c-64c2-43f0-bb2f-88c13eb4c321",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "name=save_to_cart",
+      "targets": [
+        ["name=save_to_cart", "name"],
+        ["css=.fixedBtn > .roboto-medium", "css:finder"],
+        ["xpath=//button[@name='save_to_cart']", "xpath:attributes"],
+        ["xpath=//div[@id='productProperties']/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ADD TO CART')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ffea1b4-2590-4b88-b43d-8f8bb256168c",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "name=save_to_cart",
+      "targets": [
+        ["name=save_to_cart", "name"],
+        ["css=.fixedBtn > .roboto-medium", "css:finder"],
+        ["xpath=//button[@name='save_to_cart']", "xpath:attributes"],
+        ["xpath=//div[@id='productProperties']/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ADD TO CART')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "49d40b82-6da1-468b-a0c0-93cd914d58d9",
+      "comment": "",
+      "command": "click",
+      "target": "id=menuCart",
+      "targets": [
+        ["id=menuCart", "id"],
+        ["css=#menuCart", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "f424f3b8-e05a-451b-aaab-12e090c41125",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sp",
+      "targets": [
+        ["css=.sp", "css:finder"],
+        ["xpath=//article", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2714d7c0-3095-42f1-aeef-ca144ce8835e",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "07278702-e740-4720-bf07-cb8bba709b24",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["5fd8151f-cc60-45bb-8253-c1685b78dd76"]
+  }],
+  "urls": ["https://advantageonlineshopping.com/"],
+  "plugins": []
+}

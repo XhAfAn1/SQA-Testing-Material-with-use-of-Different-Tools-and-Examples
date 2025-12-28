@@ -1,0 +1,110 @@
+{
+  "id": "bf8963a4-42b5-4606-b1d5-2a2936de6973",
+  "version": "2.0",
+  "name": "File Upload Automation",
+  "url": "https://the-internet.herokuapp.com",
+  "tests": [{
+    "id": "b4bd9ede-063c-4c0d-b9fd-9fbc34002d43",
+    "name": "File Upload Automation",
+    "commands": [{
+      "id": "12440e67-e995-4e83-8ee0-ed5aea1a4607",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "443b28a0-ff2a-4d3b-a923-7f52e9f82904",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1066",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4cdfbc49-3942-4d4c-a928-7149eb26bb95",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=File Upload",
+      "targets": [
+        ["linkText=File Upload", "linkText"],
+        ["css=li:nth-child(18) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'File Upload')]", "xpath:link"],
+        ["xpath=//div[@id='content']/ul/li[18]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/upload')]", "xpath:href"],
+        ["xpath=//li[18]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'File Upload')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d43e015-1a02-49d1-93f9-50bd3f5ba3c8",
+      "comment": "",
+      "command": "click",
+      "target": "id=file-upload",
+      "targets": [
+        ["id=file-upload", "id"],
+        ["name=file", "name"],
+        ["css=#file-upload", "css:finder"],
+        ["xpath=//input[@id='file-upload']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07ea164a-9e69-4db8-a5af-a5b43e6413d3",
+      "comment": "",
+      "command": "type",
+      "target": "id=file-upload",
+      "targets": [
+        ["id=file-upload", "id"],
+        ["name=file", "name"],
+        ["css=#file-upload", "css:finder"],
+        ["xpath=//input[@id='file-upload']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "C:\\fakepath\\Untitled1.cpp"
+    }, {
+      "id": "1475c1d2-1899-4ad6-9279-4c808d6a0149",
+      "comment": "",
+      "command": "click",
+      "target": "id=file-submit",
+      "targets": [
+        ["id=file-submit", "id"],
+        ["css=#file-submit", "css:finder"],
+        ["xpath=//input[@id='file-submit']", "xpath:attributes"],
+        ["xpath=//div[@id='content']/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1caae5f-88ff-4a83-b603-cfc9b495bff4",
+      "comment": "",
+      "command": "click",
+      "target": "css=h3",
+      "targets": [
+        ["css=h3", "css:finder"],
+        ["xpath=//div[@id='content']/div/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'File Uploaded!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7cec8003-a7cb-438e-b251-0b1ab8ad8bd3",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1ba29471-6ab9-4adf-a6ce-72512c387854",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://the-internet.herokuapp.com/"],
+  "plugins": []
+}
